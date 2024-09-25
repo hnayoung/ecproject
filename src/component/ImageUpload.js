@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faImage } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import { Row, Col, Button } from 'react-bootstrap';
 
@@ -24,47 +22,39 @@ const ImageUpload = () => {
     setError(''); // Reset error message
     const reader = new FileReader();
 
-    // Show the uploaded image immediately
     reader.onload = () => {
-      setUploadedImage(reader.result); // Set the uploaded image data
-      setHasUploaded(true); // Mark that an image has been uploaded
+      setUploadedImage(reader.result);
+      setHasUploaded(true);
 
       const formData = new FormData();
       formData.append('file', file);
 
-      // Set loading state while waiting for the backend response
       setLoading(true); 
 
-      // Uncomment this when the backend is ready
-      /*
-      axios.post('https://your-backend-api.com/upload', formData, {
+      axios.post('https://wxxnxx.pythonanywhere.com/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+        responseType: 'blob' // 서버에서 이미지를 바이너리로 받아옴
       })
       .then((response) => {
-        setConvertedImage(response.data.convertedImageUrl); // Set the converted image URL
-        setLoading(false); // Stop loading after the image is processed
+        const imageUrl = URL.createObjectURL(response.data); // 바이너리 데이터를 URL로 변환
+        setConvertedImage(imageUrl); // 변환된 이미지 URL 설정
+        setLoading(false);
       })
       .catch((error) => {
-        console.error('Error uploading image:', error);
-        setError('이미지 업로드 중 오류가 발생했습니다.'); // Set error message
-        setLoading(false); // Stop loading even if there's an error
-      });
-      */
-
-      // Mock response for testing
-      setTimeout(() => {
-        setConvertedImage(reader.result); // Use the uploaded image as the converted image for testing
+        console.error('이미지 업로드 중 오류:', error);
+        setError('이미지 업로드 중 오류가 발생했습니다.');
         setLoading(false);
-      }, 1000); // Simulate a network delay
+      });
+      
+      
     };
 
-    reader.readAsDataURL(file); // Read the file as a Data URL
+    reader.readAsDataURL(file);
   };
 
   const handleReset = () => {
-    // Reset all states
     setUploadedImage(null);
     setConvertedImage(null);
     setLoading(false);
@@ -76,7 +66,7 @@ const ImageUpload = () => {
     if (convertedImage) {
       const link = document.createElement('a');
       link.href = convertedImage;
-      link.download = 'converted_image.png'; // Download as PNG or change the extension as needed
+      link.download = 'converted_image.png';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -87,11 +77,6 @@ const ImageUpload = () => {
 
   return (
     <div style={{ width: '100%', textAlign: 'center' }}>
-      <div style={{ backgroundColor: '#87CEEB', padding: '10px', textAlign: 'left', marginBottom: '0', maxWidth: '800px', margin: 'auto' }}>
-        <h5 style={{ margin: '0', fontSize: '1rem', paddingLeft: '10px' }}>
-          손그림을 디지털 이미지로 변환
-        </h5>
-      </div>
       <div 
         style={{ 
           border: '2px dashed #ccc', 
@@ -108,9 +93,6 @@ const ImageUpload = () => {
             <input {...getInputProps()} />
             <Row className="align-items-center" style={{ justifyContent: 'center' }}>
               <Col xs="auto">
-                <FontAwesomeIcon icon={faImage} size="3x" style={{ marginBottom: '10px' }} />
-              </Col>
-              <Col xs="auto" style={{ textAlign: 'left' }}>
                 <p style={{ marginBottom: '0' }}>이미지를 드래그하거나 클릭하여 업로드하세요.</p>
                 <p style={{ marginBottom: '0', fontSize: '0.8rem', color: 'gray' }}>
                   jpg, png 파일만 지원 가능합니다.
@@ -123,22 +105,17 @@ const ImageUpload = () => {
         {loading && (
           <div>
             <p>이미지를 처리 중입니다...</p>
-            {/* Optional: Add a spinner or loading animation here */}
           </div>
         )}
 
-        {/* Error Message */}
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
-        {/* Always display the uploaded image if it exists */}
         {uploadedImage && (
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
-            {/* Uploaded Image */}
             <div style={{ width: '45%', textAlign: 'left' }}>
               <p>업로드한 이미지</p>
               <img src={uploadedImage} alt="Uploaded" style={{ width: '100%', borderRadius: '8px' }} />
             </div>
-            {/* Converted Image (if available) */}
             {convertedImage && (
               <div style={{ width: '45%', textAlign: 'left' }}>
                 <p>변환된 이미지</p>
