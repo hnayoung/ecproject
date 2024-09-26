@@ -93,6 +93,9 @@ const ImageUpload = () => {
             <input {...getInputProps()} />
             <Row className="align-items-center" style={{ justifyContent: 'center' }}>
               <Col xs="auto">
+                <p style={{ marginBottom: '0', fontSize: '2rem', color: 'gray', fontWeight: 'bold'}}>무료 이미지 변환</p>
+                <p></p>
+                <p></p>
                 <p style={{ marginBottom: '0' }}>이미지를 드래그하거나 클릭하여 업로드하세요.</p>
                 <p style={{ marginBottom: '0', fontSize: '0.8rem', color: 'gray' }}>
                   jpg, png 파일만 지원 가능합니다.
