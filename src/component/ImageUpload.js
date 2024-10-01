@@ -53,7 +53,7 @@ const ImageUpload = ({ onImageUpload }) => {
       })
       .catch((error) => {
         console.error('이미지 업로드 중 오류:', error);
-        setError('이미지 변환에 실패했습니다.');
+        setError('IMAGE ERROR!');
         setLoading(false); // 로딩 종료
         setSuccess(false);
       });
