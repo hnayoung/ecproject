@@ -1,44 +1,46 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const Navbarr = () => {
   return (
-    <nav style={styles.navbar}>
-      <h5 style={styles.title}>회로도잉</h5>
-      <div style={styles.links}>
-        <a href="#home" style={styles.link}>home</a>
-        <a href="#store" style={styles.link}>이전 기록</a>
-        <a href="#error" style={styles.link}>오류 신고</a>
+    <div>
+      <div
+        style={{
+          position: 'absolute',
+          left: '23vw', // 화면 너비의 23%로 설정 (조정 가능)
+          top: '10vh', // 화면 높이의 10%로 설정
+          backgroundImage: 'url(https://github.com/hnayoung/img_data/blob/main/%EB%A1%9C%EA%B3%A0.png?raw=true)', // url()로 감싸기
+          width: '20vw', // 화면 너비의 20%
+          height: '8vh', // 화면 높이의 8%
+          backgroundSize: 'cover', // 배경 이미지가 요소에 맞춰 조정되도록
+          backgroundPosition: 'right', // 배경 이미지를 오른쪽으로 설정
+        }}>
+        <Link to="/" style={{ display: 'block', width: '100%', height: '100%' }}></Link>
       </div>
-    </nav>
+      <div 
+        style={{
+          position: 'absolute',
+          left: '48vw', // 화면 너비의 48%에 위치 (조정 가능)
+          top: '12vh',  // 화면 높이의 12%에 위치
+          display: 'flex', // Flexbox를 사용하여 버튼을 나란히 배치
+          alignItems: 'center', // 수직 정렬을 중앙으로
+        }}>
+        <Link to="/record">
+          <Button variant="light">이전 기록</Button>
+        </Link>
+        <p style={{
+          margin: '0 10px', // 버튼과의 간격을 주기 위해 마진 추가
+          color: '#AA9A81',
+        }}>
+          |
+        </p>
+        <Link to="/report">
+          <Button variant="danger">오류 신고</Button>
+        </Link>
+      </div>
+    </div>
   );
-};
-
-const styles = {
-  navbar: {
-    width: '100%',
-    height: '50px', // 높이를 조금 더 높임
-    backgroundColor: '#f8f9fa', // 밝은 배경색
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '10px 20px',
-    boxSizing: 'border-box',
-    borderBottom: '1px solid #ddd', // 경계선
-  },
-  title: {
-    margin: 0,
-    fontSize: '1rem',
-    color: '#333',
-  },
-  links: {
-    display: 'flex',
-    gap: '15px', // 링크 간 간격
-  },
-  link: {
-    color: '#007bff', // 파란색 링크
-    textDecoration: 'none',
-    fontSize: '0.9rem',
-  }
-};
+}
 
 export default Navbarr;
