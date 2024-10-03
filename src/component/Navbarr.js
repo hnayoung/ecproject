@@ -8,13 +8,14 @@ const Navbarr = () => {
       <div
         style={{
           position: 'absolute',
-          left: '23vw', // 화면 너비의 23%로 설정 (조정 가능)
-          top: '10vh', // 화면 높이의 10%로 설정
-          backgroundImage: 'url(https://github.com/hnayoung/img_data/blob/main/%EB%A1%9C%EA%B3%A0.png?raw=true)', // url()로 감싸기
-          width: '20vw', // 화면 너비의 20%
-          height: '8vh', // 화면 높이의 8%
-          backgroundSize: 'cover', // 배경 이미지가 요소에 맞춰 조정되도록
+          left: '18vw', // 화면 너비의 23%로 설정 (조정 가능)
+          top: '9vh', // 화면 높이의 10%로 설정
+          backgroundImage: 'url(https://github.com/hnayoung/img_data/blob/main/%EC%B5%9C%EC%A2%85%EB%A1%9C%EA%B3%A0.png?raw=true)', // url()로 감싸기
+          width: '28vw', // 화면 너비의 20%
+          height: '9vh', // 화면 높이의 8%
+          backgroundSize: 'contain', // 이미지를 비율에 맞춰 전체 표시
           backgroundPosition: 'right', // 배경 이미지를 오른쪽으로 설정
+          backgroundRepeat: 'no-repeat', // 이미지가 반복되지 않도록 설정
         }}>
         <Link to="/" style={{ display: 'block', width: '100%', height: '100%' }}></Link>
       </div>

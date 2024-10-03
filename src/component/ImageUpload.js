@@ -35,7 +35,7 @@ const ImageUpload = ({ onImageUpload }) => {
       setLoading(true); // 로딩 시작
       setSuccess(false);
 
-      axios.post('https://wxxnxx.pythonanywhere.com/upload', formData, {
+      axios.post('https://wxxnxx.pythonanywhere.comm/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
