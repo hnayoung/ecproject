@@ -68,7 +68,7 @@ function App() {
             justifyContent: 'center', 
             alignItems: 'center', 
             minHeight: '100vh', // Navbarr 아래에 공간을 남김
-            marginTop: '20px' // 아래로 더 내리기 위한 마진 추가
+            marginTop: '70px' // 아래로 더 내리기 위한 마진 추가
           }}>
             <div style={{ width: '100%', maxWidth: '800px', position: 'relative' }}>
               {/* Mugi 이미지 */}
@@ -77,7 +77,7 @@ function App() {
                 alt="Mugi" 
                 style={{ 
                   position: 'absolute', // 절대 위치 지정
-                  top: '-170px', // 위쪽으로 이동
+                  top: '-150px', // 위쪽으로 이동
                   right: '-100px', // 오른쪽으로 이동
                   width: '250px', // 크기 증가
                   height: 'auto',
@@ -90,7 +90,7 @@ function App() {
                 style={{ 
                   position: 'absolute', // 절대 위치 지정
                   top: '-140px', // Mugi 이미지 위쪽으로 이동
-                  left: '600px', // 왼쪽으로 이동
+                  left: '590px', // 왼쪽으로 이동
                   width: '80px', // Mugi 이미지의 1/3 크기
                   height: 'auto',
                   zIndex: 2, // Mugi 이미지 위에 나타나도록 설정
