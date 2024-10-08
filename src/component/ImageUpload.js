@@ -93,14 +93,15 @@ const ImageUpload = ({ onImageUpload }) => {
     ? `url(${successBackground})`
     : 'none';
 
+    
+
   return (
     <div style={{
        position: 'relative', 
        textAlign: 'center',
        transition: 'transform 0.3s ease-in-out', // 애니메이션 효과 추가
        transform: isDragActive ? 'scale(1.03)' : 'scale(1)', // 드래그 시 확대 비율 조정
-    
-        }}>
+      }}>
 
       {/* 텍스트 추가 부분 */}
       <div 
@@ -136,7 +137,7 @@ const ImageUpload = ({ onImageUpload }) => {
           backgroundColor: '#FFFEF9', 
           backgroundImage: backgroundImage,
           backgroundSize: '30%',
-          backgroundPosition: 'center 40%',
+          backgroundPosition: loading ? 'center 90%' : 'center 40%', // 여기서 로딩 중일 때 아래로 50% 조정
           backgroundRepeat: 'no-repeat',
           opacity: '1',
           borderTop: '35px solid #F9C770',
@@ -165,7 +166,12 @@ const ImageUpload = ({ onImageUpload }) => {
           </div>
         )}
 
-        {loading && <LoadingSpinner />}
+        {loading && (
+          <div style={{ marginTop: '-10px' }}>
+            <LoadingSpinner />
+          </div>
+        )}
+
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
@@ -201,7 +207,7 @@ const ImageUpload = ({ onImageUpload }) => {
               )}
             </div>
 
-            <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
+            <div style={{ marginTop: '50px', display: 'flex', justifyContent: 'center' }}>
               <Button
                 onClick={handleReset}
                 style={{
@@ -226,7 +232,7 @@ const ImageUpload = ({ onImageUpload }) => {
         )}
 
         {error && (
-          <div style={{ marginTop: '180px', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ marginTop: '200px', display: 'flex', justifyContent: 'center' }}>
             <Button
               onClick={handleReset}
               style={{
